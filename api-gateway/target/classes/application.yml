@@ -1,0 +1,35 @@
+
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: API-GATEWAY
+#  main:
+#    web-application-type: reactive
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: POST-SERVICES
+          uri: lb://POST-SERVICES
+          predicates:
+            - Path=/api/microPost/**
+
+        - id: COMMENTS-SERVICES
+          uri: lb://COMMENTS-SERVICES
+          predicates:
+            - Path=/api/microComment/**
+
+
+# Eureka Client Configuration
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

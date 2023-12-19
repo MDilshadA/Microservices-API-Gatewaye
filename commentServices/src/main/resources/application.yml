@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: COMMENTS-SERVICES
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservicescomments
+    username: root
+    password: Dilshad@123
+
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update # or create-drop if you want to recreate tables on every start
+    show-sql: true # set to true to display SQL queries in console/log
+server:
+  port: 8082 # Change this to the desired port number
+
+
+# Eureka Client Configuration
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
